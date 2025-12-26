@@ -3,6 +3,7 @@ import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import SmoothInfiniteScroll from "@/components/SmoothInfiniteScroll";
 import { Fonts } from "@/constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
+import { Link } from "expo-router";
 import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 export default function Index() {
@@ -36,16 +37,19 @@ export default function Index() {
         {/* Login buttons */}
 
         <View style={styles.buttonContainer}>
-          <Animated.View entering={FadeInDown.delay(100)}>
-            <AppleAuthButton />
-          </Animated.View>
+
           <Animated.View entering={FadeInDown.delay(200)}>
             <GoogleAuthButton />
           </Animated.View>
+          <Animated.View entering={FadeInDown.delay(200)}>
+            <AppleAuthButton />
+          </Animated.View>
           <Animated.View entering={FadeInDown.delay(300)}>
-            <TouchableOpacity style={styles.otherButton}>
-              <Text style={styles.otherButtonText}>Other Option</Text>
-            </TouchableOpacity>
+            <Link href={'/(app)/(public)/other-options'} asChild>
+              <TouchableOpacity style={styles.otherButton}>
+                <Text style={styles.otherButtonText}>Other Option</Text>
+              </TouchableOpacity>
+            </Link>
           </Animated.View>
         </View>
         <Animated.View style={styles.privacyContainer} entering={FadeInDown.delay(400)}>
